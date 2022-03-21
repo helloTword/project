@@ -1,0 +1,15 @@
+1、
+<span v-if="isUser">
+  <label for="username">用户账号</label>
+  <input type="text" id="username" placeholder="用户账号"></span>
+
+(for的作用)点击label中的文字时,聚焦到 输入框内
+(placeholder的作用)输入框内默认的"虚"文字
+
+2、加一个"key"属性就可以 取消复用("重复利用",当切换时,括号内原本输入的信息消除)
+<input type="text" id="emailname" placeholder="用户邮箱" key="emainame">
+<input type="text" id="emailname" placeholder="用户邮箱">
+
+3、
+v-if:当条件为false时,包含v-if指令的元素,根本就不会存在dom中(删掉,再加回来) 一次切换
+v-show:当条件为false时,v-show只是给我们的元素添加一个行内样式:display:none(改变样式) 频繁切换

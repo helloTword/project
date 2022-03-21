@@ -1,0 +1,40 @@
+1、计算属性(属性,起名字,尽量不加动词)  在<div></div>中引用的时候不需要加()
+普通版本:    <h2>{{getFullName()}}</h2> 
+methods: {
+  getFullName: function () {
+    return this.firstName+ ' ' + this.lastName
+  }
+}
+计算属性版本: <h2>{{fullName}}</h2>
+computed: {
+  fullName: function () {
+    return this.firstName + ' '+this.lastName
+  }
+}
+2、computed比methhods性能更高,methods调用几次,就缓存几次
+coputed计算属性的复杂操作
+<div id="app">
+  <h2>总价格:{{totalPrice}}</h2>    
+</div>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data:{
+      books: [
+        {id: 110, name: 'Unix编程艺术', price: 111},
+        {id: 111, name: '计算机网络', price: 112},
+        {id: 112, name: 'c#的编程艺术', price: 113},
+        {id: 113, name: '现代操作系统', price: 114},
+      ]
+    },
+    computed: {
+      totalPrice: function () {
+        let result=0
+        for (let i=0; i<this.books.length; i++){
+          result +=this.books[i].price
+        }
+          return result
+      }
+    }
+  })
+</script>

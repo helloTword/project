@@ -1,0 +1,81 @@
+v-for遍历数组
+1、在遍历的过程中,没有使用索引值(下标值)
+<ul>
+  <li v-for="item in names">{{item}}</li>
+</ul>
+
+2、在遍历的过程中,获取索引值
+<ul>
+  <li v-for="(item, index) in names">{{index+1}}.{{item}}</li>
+</ul>
+
+v-for遍历对象
+1、在遍历对象的过程中,如果只是获取一个值,那么获取到的是value
+
+<ul>
+  <li v-for="item in info">{{item}}</li>
+</ul>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      info: {
+        name: 'why',
+        age: 18,
+        height: 1.92
+      }
+    }
+  })
+</script>
+
+2、获取key和value (value, key)
+<ul>
+  <li v-for="(key, value) in info">{{value}}-{{key}}</li>
+</ul>
+
+3、获取key和value和index 格式:(value, key, index)
+<ul>
+  <li v-for="(key, value, index) in info">{{value}}-{{key}}-{{index}}</li>
+</ul>
+
+
+<p>运行控制台操作:</p>
+1、在控制台中,对原来的数组进行删除或者增加数字
+添加元素:app.letters.splice(2, 0, 'F')
+删除元素:app.letters.splice(2, 0)
+
+
+<p>(数组的改变是响应式的) 点击发生变化后,页面直接改变</p>
+
+push、pop、shitft、unshift、splice、sort
+push(在数组的末尾增加一个元素,可以传入多个值) unshift(在数组的第一个位置增加一个元素)
+pop(删除数组中的最后一个元素) shift(删除数组中的第一个元素)
+splice作用:删除元素/插入元素/替换元素
+splice(start,删除个数[如果个数为0,表示只剩一个,其余都删除])
+splice(start,替换元素个数,'元素1','元素2','元素3')
+splice(start,0,'元素1','元素2','元素3')
+sort()将数组内容排序
+reverse()将数组内容反转
+
+methods: {
+btnClick() {
+this.letters.push('aaa');
+}
+},//以上都是响应式的(会自动刷新界面)
+
+还可以使用Vue.set()修改对象
+Vue.set(this.letters, 0, 'bbbb')
+set(要修改的对象,索引值,修改后的值)
+
+<p>(不是响应式的)</p>
+this.letters[0] = 'bbbb';
+
+当方法出现...时,可以传入多个值
+如:
+
+function sum(...sum) {
+console.log(num);
+}
+sum(10,12,143,15,61,23)

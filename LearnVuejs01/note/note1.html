@@ -1,0 +1,94 @@
+1、let(变量)   const(常量)  编程范式:声明式编程
+2、
+<div id="id>{{xxxxxxx}}</div>
+<script>
+   const id=new Vue({
+    el:'#id',  //用于挂载要管理的元素(相当于选择器,选择容器),string类型
+    data:{//定义数据,object类型,Vue实例对应的数据对象
+        messages:'xxxxxxx',
+        name:'xxxxxxx'
+    },
+    methods:{
+        add:function(){
+            console.log('xxxxxxxx');
+        }
+    }
+   })
+</script>
+
+3、数组的遍历 v-for指令,响应式的(当我们数组中的数据发生改变时,界面会自动改变)
+   (v-for后面跟的是="表达式")
+<div id="app">
+    <ul>
+        <li v-for="item in xxx">{{item}}</li> //v-for='item in xxx'
+    </ul>
+</div>
+
+<script>
+    const app=new Vue({
+        el:"#app",
+        message='xxxx',
+        movies=['xx','xxx','xxx'],
+    })
+</script>
+4、计数器 v-on(监听事件)  v-on:click="counter++"
+<div id="app">
+    <h2>当前计数:{{counter}}</h2>
+    <button v-on:click="counter++">+</button>
+    <button v-on:click="counter++">-</button>
+</div>
+<script>
+    const app=new Vue({
+        el:"#app",
+        counter:0
+    })
+</script>
+5、定义方法  methods(该属性用于在Vue对象中定义方法) 
+            @click,该指令用于监听某个元素的点击事件,并且需要指定当发生点击时，执行的方法
+            @click是v-on:click的"语法糖"(简写)
+            this(rui si)   
+<div id="app">
+    <buttron v-on:click="add">+</buttron>
+    <buttron v-on:click="sub">-</buttron>
+</div>
+<script>
+    const app=new Vue({
+        el:"#app",
+        data:{
+            counter:0
+        },
+        methods:{
+            add:function(){
+                console.log('add被执行');
+                this.counter++;
+            },
+            sub:function(){
+                console.log('sub被执行');
+                this.counter--;
+            }
+        }
+    })
+</script>
+6、{}相当于一个对象  效果同(5)
+    <script>
+        //proxy 代理
+        const obj = {
+            counter:0,
+            message:'abc'
+        }
+        const app=new Vue({
+            el:"#app",
+            data:obj,
+        })
+    </script>
+7、VueJS是MVVM框架
+   VueModel层:
+   ➢视图模型层
+   ➢视图模型层是View和Model沟通的桥梁。
+   ➢一方面它实现了DataBinding,也就是数据绑定,将Model的改变实时的反应到View中
+   ➢另一方面它实现了DOMListener,也就是DOM监听,当DOM发生一些事件(点击、滚动、
+     touch等)时,可以监听到,并在需要的情况下改变对应的Data。
+8、view (div) ➢视图层
+   viewmodel(new Vue()) ➢视图模型层,中间解析作用
+   MOdel(data)➢数据层 把view中的指令 通过viemodel解析,回调到mode
+9、代码规范:缩进4个空格(2个空格最好)   CLI->.editconfig 2个空格

@@ -1,0 +1,27 @@
+1、fullName作为属性被引用,不再是函数  <h2>{{fullName}}</h2>    
+【每个计算属性都包含一个getter和一个setter】
+简写版(常用版):
+computed: {
+  fullName: function () {
+    return this.firstname+' '+this.lastName
+  }
+}
+完整版(fullName对应的是一个对象,对象对应两个方法set和get):
+computed: {
+  fullName: {
+    set: function () {
+
+    },
+  //一般没有set方法,只有get方法
+    get: function () {
+      return this.firstName+ ' ' +lastName
+    }
+  }
+}
+
+2、在mustache语法中,几种不同输出的比较
+(不采用:语法过于繁琐)第一:(直接拼凑)    <h2>{{firstName}} {{lastName}}</h2> 
+(使用多次,调用多次)第二:(通过定义methods)    <h2>{{getFullName()}}</h2>  
+(使用多次,调用1次)第三:(通过computed)    <h2>{{FullName}}</h2> 
+
+3、

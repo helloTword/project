@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<scr>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+  <img v-bind:src="imgURL" alt="">
+  <a v-bind:href="aHref" >百度一下</a>
+  <img :src="imgURL" alt="">
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: '您好！',
+            imgURL: 'https://cn.vuejs.org/images/logo.svg',
+            aHref:'http://www.baidu.com',
+        }
+    })
+</script>
+
+</body>
+</html>
